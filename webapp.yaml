@@ -29,13 +29,12 @@ spec:
           valueFrom:
             secretKeyRef:
               name: mongo-secret
-              key: mongo-password
+              key: mongo-password 
         - name: DB_URL
           valueFrom:
             configMapKeyRef:
               name: mongo-config
               key: mongo-url
-
 ---
 apiVersion: v1
 kind: Service
@@ -44,7 +43,7 @@ metadata:
 spec:
   type: NodePort
   selector:
-    app.kubernetes.io/name: webapp
+    app: webapp
   ports:
     - protocol: TCP
       port: 3000
